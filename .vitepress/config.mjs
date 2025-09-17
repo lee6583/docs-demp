@@ -3,7 +3,7 @@ import { set_sidebar } from './utils/auto_sidebar.mjs'  // 同级 utils 目录
 
 export default defineConfig({
   base: "/docs-demp/",
-  head: [["link", { rel: "icon", href: "/docs-demo/logo.png" }]],//网站 Logo
+  head: [["link", { rel: "icon", href: "/docs-demp/logo.png" }]],//网站 Logo
   title: '我的厉害的项目',
   description: 'A VitePress Site',
   themeConfig: {
