@@ -2,7 +2,8 @@ import { defineConfig } from 'vitepress'
 import { set_sidebar } from './utils/auto_sidebar.mjs'  // 同级 utils 目录
 
 export default defineConfig({
-  head: [["link", { rel: "icon", href: "/logo.png" }]],//网站 Logo
+  base: "/docs/",
+  head: [["link", { rel: "icon", href: "/docs/logo.png" }]],//网站 Logo
   title: '我的厉害的项目',
   description: 'A VitePress Site',
   themeConfig: {
@@ -59,7 +60,5 @@ export default defineConfig({
         },
       },
     },
-  },
-
-     
+  },   
 })
