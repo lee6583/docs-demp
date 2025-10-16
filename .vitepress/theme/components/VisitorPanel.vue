@@ -5,7 +5,7 @@
       <section class="grid">
         <span class="text">
           本站总访问量
-          <span id="busuanzi_value_site_pv" class="font-bold">--</span> 次
+          <span id="busuanzi_value_site_pv"></span> 次
         </span>
         <img
           src="/public/cat.gif"
@@ -17,7 +17,7 @@
         />
         <span class="text">
           本站访客数
-          <span id="busuanzi_value_site_uv" class="font-bold">--</span> 人次
+          <span id="busuanzi_value_site_uv"></span> 人
         </span>
       </section>
     </div>
@@ -26,6 +26,16 @@
 
 <script setup lang="ts">
 import { inBrowser } from "vitepress";
+
+// 动态加载 vercount 统计脚本
+if (inBrowser) {
+  const s = document.createElement("script");
+  s.src = "https://vercount.one/js";
+  s.defer = true;
+  document.head.appendChild(s);
+}
+
+// 点击统计按钮跳转到 Umami
 const onLinkUmiHandle = () => {
   if (inBrowser) {
     window.open(
