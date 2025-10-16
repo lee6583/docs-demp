@@ -1,10 +1,17 @@
 {
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "canvas-confetti": "^1.9.3",
+    "typescript": "^5.9.3",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.22",
+    "vue-tsc": "^3.1.1"
   },
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "busuanzi.pure.js": "^1.0.3"
   }
 }

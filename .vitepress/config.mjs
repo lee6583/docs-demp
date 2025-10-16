@@ -3,27 +3,87 @@ import { set_sidebar } from './utils/auto_sidebar.mjs'  // 同级 utils 目录
 
 export default defineConfig({
   base: "/docs-demp/",
-  head: [["link", { rel: "icon", href: "/docs-demp/logo.png" }]],//网站 Logo
-  title: '我的厉害的项目',
+  head: [
+  // 网站图标
+  ["link", { rel: "icon", href: "/logo.png" }],
+
+  // 自动加载不蒜子统计脚本（仅在正式站点启用）
+  [
+    "script",
+    {},
+    `
+    (function() {
+      // 只在 GitHub Pages 正式地址下加载不蒜子脚本
+      if (typeof location === 'undefined') return;
+      var isProd = location.hostname === 'lee6583.github.io' && location.pathname.startsWith('/docs-demp/');
+      if (!isProd) {
+        console.log('[Busuanzi] skipped (not lee6583.github.io/docs-demp/)');
+        return;
+      }
+
+      // 防止重复加载
+      if (document.getElementById('busuanzi-script')) return;
+
+      var bs = document.createElement('script');
+      bs.id = 'busuanzi-script';
+      bs.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+      bs.async = true;
+      bs.onload = function() {
+        console.log('[Busuanzi] script loaded on production');
+      };
+      document.body.appendChild(bs);
+    })();
+    `
+  ]
+],
+
+  title: '知识博客',
   description: 'A VitePress Site',
   themeConfig: {
     outlineTitle: '目录',
     outline: [2, 6],
-    logo: '/logo.png', // 确保 docs/public/logo.png 存在
+    logo: '/博客.svg', 
 
     // 顶部导航
     nav: [
+      { text: '技术书籍', link: 'https://github.com/lee6583' },
+      { text: '算法', link: '/front-end/react/' },
       {
-        text: '家',
+        text: '前端',
+        items: [
+          {
+            text:'技术栈',
+            items:[
+            { 
+             text: '<span style="display:inline-flex;align-items:center;"><img src="/docs-demp/html.svg" style="width:16px;height:16px;margin-right:6px;">HTML</span>',
+             link:"/"
+            },
+            { 
+             text: '<span style="display:inline-flex;align-items:center;"><img src="/docs-demp/css.svg" style="width:16px;height:16px;margin-right:6px;">CSS</span>',
+             link: '/front-end/react/index.md' 
+            },
+            { 
+             text: '<span style="display:inline-flex;align-items:center;"><img src="/docs-demp/js.svg" style="width:16px;height:16px;margin-right:6px;">JavaScript</span>',
+             link: '/markdown-examples' 
+            },
+            { 
+             text: '<span style="display:inline-flex;align-items:center;"><img src="/docs-demp/typescript.svg" style="width:16px;height:16px;margin-right:6px;">TypeScript</span>',
+             link: '/markdown-examples' 
+            },
+           ],
+          },
+        ]
+      },
+      { text: '后端', link: '/backend/rabbitmq/' },
+      { text: '计算机知识', link: '/backend/rabbitmq/' },
+      { text: 'AI', link: '/两边栏演示' },
+      {
+        text: '项目',
         items: [
           { text: '首页', link: '/' },
           { text: 'markdown 示例', link: '/markdown-examples' },
         ],
       },
-      { text: '示例', link: 'https://github.com/lee6583' },
-      { text: '自动生成侧边栏', link: '/front-end/react/' },
-      { text: '自动生成侧边栏2', link: '/backend/rabbitmq/' },
-      { text: '两边栏演示', link: '/两边栏演示' },
     ],
 
     // 侧边栏（key 以 / 结尾；传参不要以 / 开头）
